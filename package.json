@@ -1,0 +1,41 @@
+{
+  "name": "pizza-delivery-node",
+  "version": "0.0.0",
+  "description": "Pizza delivery service",
+  "main": "index.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "ts-node index.ts",
+    "compile:ts": "tsc public/app.ts",
+    "prod": "NODE_ENV=prod ts-node index.ts",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maden-maxi/pizza-delivery.git"
+  },
+  "keywords": [
+    "Pizza",
+    "node.js",
+    "node.ts",
+    "typescript"
+  ],
+  "author": "Denys Dnishchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maden-maxi/pizza-delivery/issues"
+  },
+  "homepage": "https://github.com/Maden-maxi/pizza-delivery#readme",
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "nodemon": "^1.18.6",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  },
+  "dependencies": {
+    "mongodb": "^3.1.8",
+    "mongodb-typescript": "^1.5.1"
+  }
+}

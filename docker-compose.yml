@@ -1,0 +1,32 @@
+version: "3"
+services:
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - pizza-data:/data/db
+    networks:
+      - webnet
+    env_file:
+      - .env
+  web:
+    image: node:8.11.4
+    depends_on:
+      - db
+    restart: always
+    user: "node"
+    working_dir: /home/node/app
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    env_file:
+      - .env
+    networks:
+      - webnet
+    volumes:
+      - ./:/home/node/app
+    command: npm start
+networks:
+  webnet:
+volumes:
+  pizza-data:
