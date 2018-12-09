@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     app.cart.count = function() {
         app.cart.counter.innerHTML = app.cart.get().length;
     }
-    app.cart.key = 'cart_' + app.getSession().user._id;
+    app.cart.key = app.getSession() ? 'cart_' + app.getSession().user._id : '';
     app.cart.get = function() {
         return app.client.storage.get(app.cart.key) || [];
     }
