@@ -57,6 +57,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
         app.cart.count();
     }
 
+    app.cart.clear = function() {
+        app.client.storage.set(app.cart.key, []);
+    }
+
     app.cart.render = function() {
         const cartItems = document.getElementById('cart_items');
         if (cartItems) {
@@ -109,8 +113,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
                         email: token.email,
                         description: cartInfo.cartGoods
                     };
-                    app.client.request('post', 'api/order', order, function (statusCode, response) {
+                    app.client.request('post', 'api/orders', order, function (statusCode, response) {
                         console.log(statusCode, response);
+                        if (statusCode === 201 ) {
+                            app.cart.clear();
+                            alert('Your order has been accepted!');
+                            location.assign(location.origin + '/orders')
+                        }
                     });
                 });
             });
@@ -340,6 +349,36 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
     }
 
+    app.getOrders = function () {
+        const orderTablle = document.getElementById('orders-table');
+        if (orderTablle) {
+            app.client.request('GET', 'api/orders', {}, function (status, data) {
+                const orderTableBody = orderTablle.querySelector('tbody');
+                if (status === 200) {
+                    console.log(data);
+                    const output = data.map(item => {
+                        const details = JSON.parse(item.description);
+                        const createdAt = new Date(item.createdAt);
+                        return `
+                        <tr>
+                            <td>${item._id}</td>
+                            <td>${item.amount / 100}$</td>
+                            <td>${details.map(product => `<div>${product.title} - ${product.price}$ x ${product.count}</div>`).join('')}</td>
+                            <td>${createdAt.toLocaleString()}</td>
+                            <td><button type="button" class="btn btn-danger remove-order" data-order_id="${item._id}">Delete</button></td>
+                        </tr>
+                        `;
+                    }).join('');
+                    orderTableBody.innerHTML = output;
+                }
+
+                if (status >= 400) {
+                    alert('Somethig went wrong');
+                }
+            });
+        }
+    }
+
     function delegateEvent(eventName, selector, callback) {
         document.querySelector('body').addEventListener(eventName, function (event) {
             if (event.target.classList.contains(selector)) {
@@ -390,6 +429,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
         app.getProducts()
         app.cart.count();
         app.cart.render();
+        app.getOrders();
 
         app.logoutHandler();
 

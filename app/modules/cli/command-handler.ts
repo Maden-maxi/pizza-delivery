@@ -7,13 +7,13 @@ import { commandNotExist } from './commands/undefined';
  * @param command
  */
 function parseCommand(command: string): {name: string; args: any} {
-    const commandParts = command.split(' ').map(cmd => cmd.replace('--', ''));
-    const commandName = commandParts.filter(cmd => !cmd.includes('='));
+    const commandParts = command.split(' ');
+    const commandName = commandParts.filter(cmd => !cmd.includes('--'));
     let argsObject = {};
-    commandParts.filter(cmd => cmd.includes('='))
+    commandParts.filter(cmd => cmd.includes('--'))
         .forEach(cmd => {
             const arg = cmd.split('=');
-            const name = arg[0];
+            const name = arg[0].replace('--', '');
             argsObject = {
                 ...argsObject,
                 [name]: arg[1]

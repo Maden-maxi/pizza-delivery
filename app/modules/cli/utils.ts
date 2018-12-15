@@ -26,7 +26,7 @@ export function horizontalLine() {
     console.log(line);
 }
 
-export function verticalSpace(lines: number) {
+export function verticalSpace(lines: number = 0) {
     lines = typeof(lines) == 'number' && lines > 0 ? lines : 1;
     for (let i = 0; i < lines; i++) {
         console.log('');

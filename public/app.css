@@ -255,3 +255,8 @@ body {
 .cart-table td, .cart-table th {
     border: 1px solid #000;
 }
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}

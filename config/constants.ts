@@ -26,6 +26,7 @@ export const TEMPLATE_GLOBALS = {
         {url: '/login', title: 'Login', visibility: ['guest']},
         {url: '/account', title: 'Account Settings', visibility: ['seller', 'buyer']},
         {url: '/create-product', title: 'Create Product', visibility: ['seller']},
+        {url: '/orders', title: 'Orders', visibility: ['buyer']},
         {url: '/logout', title: 'Logout', visibility: ['seller', 'buyer', 'logout']}
     ]
 };

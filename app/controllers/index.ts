@@ -13,6 +13,8 @@ import { ProductDetailController } from './pages/product-detail.controller';
 import { CartController } from './pages/cart.controller';
 import { CartListController } from './api/cart-list.controller';
 import { OrderController } from './api/order.controller';
+import { OrdersPageController } from './pages/orders-page.controller';
+import { OrdersController } from './api/orders.controller';
 
 export const controllers = [
     // api
@@ -23,6 +25,7 @@ export const controllers = [
     new ProductsController(),
     new CartListController(),
     new OrderController(),
+    new OrdersController(),
     // assets
     new AssetsController(),
     // pages
@@ -32,5 +35,6 @@ export const controllers = [
     new AccountController(),
     new CreateProductController(),
     new ProductDetailController(),
-    new CartController()
+    new CartController(),
+    new OrdersPageController()
 ];
