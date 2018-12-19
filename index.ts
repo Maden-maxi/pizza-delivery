@@ -8,6 +8,8 @@ import { Server } from './app/modules/server';
 import { Workers } from './app/modules/workers';
 import { MethodNotAllowedController } from './app/controllers/errors/method-not-allowed.controller';
 import { NotAuthorizedController } from './app/controllers/errors/not-authorized.controller';
+import { fork, isMaster } from 'cluster';
+import { cpus } from 'os';
 
 export const app = new Server({
     name: environment.APP_ENV,
@@ -25,4 +27,12 @@ export const app = new Server({
     })
 });
 
-app.init().then(() => Workers.init());
+function start() {
+    if (isMaster) {
+        Workers.init();
+        cpus().forEach(() => fork())
+    } else {
+        app.init();
+    }
+}
+start();
