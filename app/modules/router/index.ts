@@ -19,7 +19,6 @@ export class Router {
         const route = this.routes.filter(
             route => typeof route.path === 'string' ? url === route.path : url.match(route.path)
         );
-        console.log(route);
         if (route.length) {
             return route[0];
         }

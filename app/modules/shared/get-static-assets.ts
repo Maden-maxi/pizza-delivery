@@ -1,7 +1,7 @@
 import { readFile } from 'fs';
 import { ROOT_DIR } from '../../../config/constants';
 
-export function getStaticAssets(fileName,callback) {
+export function getStaticAssets(fileName, callback) {
     fileName = typeof(fileName) == 'string' && fileName.length > 0 ? fileName : false;
     if(fileName){
         readFile(ROOT_DIR + fileName, function(err,data){

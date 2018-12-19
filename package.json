@@ -10,8 +10,9 @@
     "start": "ts-node index.ts",
     "compile:ts": "tsc public/app.ts",
     "prod": "NODE_ENV=prod ts-node index.ts",
-    "test": "test",
-    "cli": "ts-node app/modules/cli/index.ts"
+    "test": "NODE_ENV=testing ts-node test",
+    "cli": "ts-node app/modules/cli/index.ts",
+    "serve:debug": "ts-node inspect index.ts"
   },
   "repository": {
     "type": "git",

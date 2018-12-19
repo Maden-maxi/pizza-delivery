@@ -41,3 +41,7 @@ So, to run CLI you should run
 npm run cli
 ```
 To see list of commands run *man* or *help*
+
+## How to run tests
+
+Do same steps as in *How to run cli*, but run `npm test` instead of `npm run cli`

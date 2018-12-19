@@ -4,7 +4,7 @@ import { EOL } from 'os';
 import { EnvInterface } from './env-interface';
 
 // Determine which environment was passed as a command-line argument
-const currentEnvironment = typeof(process.env.NODE_ENV) === 'string' ? process.env.NODE_ENV.toLocaleLowerCase() : '';
+const currentEnvironment = typeof(process.env.NODE_ENV) === 'string' ? '-' + process.env.NODE_ENV.toLowerCase() : '';
 
 const env: string = readFileSync(join(__dirname, '..', '.env' + currentEnvironment), {encoding: 'utf-8'});
 const getEnvs = () => {
