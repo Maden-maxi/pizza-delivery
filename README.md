@@ -15,6 +15,10 @@ docker-compose up
 ```
 
 ## How to run cli
+First install dependencies
+```
+docker run -u $UID:$EUID -v=`pwd`:/home/node/app -w /home/node/app node:8.11.4 npm i
+```
 
 To run cli first execute project environment vie:
 ```
