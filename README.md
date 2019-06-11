@@ -2,12 +2,27 @@
 
 Written with TypeScript, MongoDB and Docker
 
+For run project you need to install docker and docker-compose
+
 ## Before get start
 Copy .env-example and rename it to .env then fill env variables in .env
 
 ## How to run project?
+Generate https keys:
 
-For run project you need to install docker and docker-compose
+
+```
+openssl req -x509 -newkey rsa:4096 -keyout ./https/key.pem -out ./https/cert.pem -days 365
+```
+
+Then go to root of the project and install dependencies:
+
+
+```
+// -u $UID:$EUID for Linux users
+docker run -u $UID:$EUID -v=`pwd`:/home/node/app -w /home/node/app node:8.11.4 npm i
+```
+
 
 After that just run 
 ```bash
@@ -15,10 +30,6 @@ docker-compose up
 ```
 
 ## How to run cli
-First install dependencies
-```
-docker run -u $UID:$EUID -v=`pwd`:/home/node/app -w /home/node/app node:8.11.4 npm i
-```
 
 To run cli first execute project environment vie:
 ```
