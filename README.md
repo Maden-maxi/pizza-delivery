@@ -12,7 +12,7 @@ Generate https keys:
 
 
 ```
-openssl req -x509 -newkey rsa:4096 -keyout ./https/key.pem -out ./https/cert.pem -days 365
+mkdir https && openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout ./https/key.pem -out ./https/cert.pem
 ```
 
 Then go to root of the project and install dependencies:
