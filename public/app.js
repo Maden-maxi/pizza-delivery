@@ -288,9 +288,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
                 });
             }
 
-            form.addEventListener('keyup', function () {
+            /*form.addEventListener('keyup', function () {
                 formButton.disabled = !this.checkValidity();
-            });
+                console.log(!this.checkValidity());
+            });*/
 
             form.addEventListener('submit',  function (event) {
                 event.preventDefault();

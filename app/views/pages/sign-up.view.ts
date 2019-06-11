@@ -60,7 +60,7 @@ export function signUpView(page, view?: any) {
                 </div>
                 
                 <div class="form-group">
-                    <button class="btn btn-primary btn-submit" disabled>Sign up</button>
+                    <button class="btn btn-primary btn-submit">Sign up</button>
                 </div>
                 
                 <div id="errors" class="form-group d-none"></div>
